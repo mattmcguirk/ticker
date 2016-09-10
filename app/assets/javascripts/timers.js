@@ -1,7 +1,7 @@
 /* global isPaused */ 
 /* global $ */ 
 
-var isPaused = 0,
+var isPaused = 1,
     timeElapsed = 0; 
 
 $(document).ready(function(){
@@ -43,6 +43,12 @@ function resetTimer()
 
 function finishTask() 
 {
+  var description = $("#description textarea").val(), 
+  time = Math.floor((timeElapsed / 60)) + "\" " + (timeElapsed%60) + "'"; 
+  
+  $("#task-log ul").append("<li>" + description + " - " + time + "</li>");
+  
+  $("#description textarea").val(""); 
   resetTimer(); 
   /* write time and task to database */ 
 }
