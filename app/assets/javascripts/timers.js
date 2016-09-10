@@ -10,12 +10,13 @@ $(document).ready(function(){
       seconds = $(".seconds"),
       startButton =  $("#start"),
       finishButton = $("#finish"),
-      pauseButton =  $("#pause");
+      pauseButton =  $("#pause"),
+      resetButton = $("#reset");
 
   startButton.on("click", startTimer);
   pauseButton.on("click", pauseTimer);  
   finishButton.on("click", finishTask);  
-        
+  resetButton.on("click", resetTimer);      
       
   setInterval(function() {
     if(!isPaused)
@@ -38,6 +39,7 @@ function resetTimer()
   timeElapsed = 0; 
   $(".seconds").html("00");
   $(".minutes").html("0");
+  $("#description textarea").val(""); 
 }
 
 function finishTask() 
