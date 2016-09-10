@@ -33,11 +33,18 @@ function pauseTimer() { isPaused = 1; }
 
 function startTimer() { isPaused = 0; }
 
+function resetTimer() 
+{
+  pauseTimer();
+  timeElapsed = 0; 
+  $(".seconds").html("00");
+  $(".minutes").html("0");
+}
+
 function finishTask() 
 {
-  pauseTimer(); 
+  resetTimer(); 
   /* write time and task to database */ 
-  elapsedTime = 0; 
 }
 
 function pad(number)
