@@ -20,7 +20,9 @@
 </div>
 
 <div class="row center">
-  <button id="finish">Finish Task</button>
+  <%= form_for(@task, url: tasks_new_path) do |f| %>
+      <%= f.submit "Finish task", class: "btn btn-primary", id: "finish" %>
+  <% end %> 
 </div>
 
 <div class="row">

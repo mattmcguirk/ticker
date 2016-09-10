@@ -53,6 +53,7 @@ function finishTask()
   $("#task-log table").show(); 
   resetTimer(); 
   /* write time and task to database */ 
+  return false; 
 }
 
 function pad(number)

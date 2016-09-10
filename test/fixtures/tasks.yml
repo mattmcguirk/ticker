@@ -1,9 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  seconds_elapsed: 1
+  time: 1
+  description: MyText
   user_id: 1
 
 two:
-  seconds_elapsed: 1
+  time: 1
+  description: MyText
   user_id: 1

@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
-  
-  get '/hello', to: "application#hello"
-  get 'timers/view'
-  root 'timers#view'
+
+  get  '/tasks/index', to: 'tasks#index'
+  get  '/tasks/view',  to: 'tasks#view'
+  get  '/tasks/new',   to: 'tasks#new'
+  post '/tasks/new',   to: 'tasks#create'  
+  root 'tasks#new'
 
 end
