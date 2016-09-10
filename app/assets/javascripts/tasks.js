@@ -48,7 +48,7 @@ function finishTask()
   time = Math.floor((timeElapsed / 60)) + "m " + (timeElapsed%60) + "s"; 
   
   $("#task-log table tbody").append("<tr><td>" + time + "</td> <td>" + description + "</td></tr>");
-  $.post('/tasks/new', { time: timeElapsed, description: description, user_id: 1 }, function(){console.log("data posted.")});
+  $.post('/tasks/new', { task: { time: timeElapsed, description: description, user_id: 1 }}, function(){console.log("data posted.")});
   $("#description textarea").val(""); 
   $("#task-log .message").html("")
   $("#task-log table").show(); 
