@@ -43,7 +43,7 @@ function resetTimer()
 function finishTask() 
 {
   var description = $("#description textarea").val(), 
-  time = Math.floor((timeElapsed / 60)) + "\" " + (timeElapsed%60) + "'"; 
+  time = Math.floor((timeElapsed / 60)) + "m " + (timeElapsed%60) + "s"; 
   
   $("#task-log ul").append("<li>" + description + " - " + time + "</li>");
   $("#description textarea").val(""); 
