@@ -47,8 +47,10 @@ function finishTask()
   var description = $("#description textarea").val(), 
   time = Math.floor((timeElapsed / 60)) + "m " + (timeElapsed%60) + "s"; 
   
-  $("#task-log ul").append("<li>" + description + " - " + time + "</li>");
+  $("#task-log table tbody").append("<tr><td>" + time + "</td> <td>" + description + "</td></tr>");
   $("#description textarea").val(""); 
+  $("#task-log .message").html("")
+  $("#task-log table").show(); 
   resetTimer(); 
   /* write time and task to database */ 
 }

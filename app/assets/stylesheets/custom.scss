@@ -18,3 +18,39 @@ main { max-width: 960px; margin: 0 auto; }
     width: 100%;
     padding: 10px;
 }
+
+#task-log h3
+{
+    padding-top: 25px;
+}
+
+#task-log table
+{
+    display: none;
+    margin: 25px auto;     
+}
+
+#task-log thead
+{ 
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+#task-log  td:first-child
+{
+    text-align: left; 
+    min-width: 50px;
+    vertical-align: top;
+}
+
+#task-log tbody td:nth-child(2)
+{
+    text-align: left; 
+    padding-left: 50px;
+}
+
+#task-log thead td:nth-child(2)
+{
+    text-align: left; 
+    padding-left: 50px;
+}
