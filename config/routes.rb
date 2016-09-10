@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-
-root 'application#hello'
+  
+  get '/hello', to: "application#hello"
+  get 'timers/view'
+  root 'timers#view'
 
 end
