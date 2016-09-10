@@ -1,1 +1,18 @@
-<p>This page should show completed tasks.</p>
+<table>
+  <thead>
+    <tr>
+      <td>Date</td>
+      <td>Time Taken</td>
+      <td>Description</td>
+    </tr>
+  </thead>
+  <tbody>
+  <% @tasks.each do |t| %> 
+    <tr>
+      <td><%= t.created_at %></td>
+      <td><%= t.time %></td>
+      <td><%= t.description %></td>
+    </tr>  
+  <% end %>   
+  </tbody>
+</table>
