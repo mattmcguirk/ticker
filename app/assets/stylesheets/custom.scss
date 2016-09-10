@@ -4,3 +4,17 @@
 body { width: 100%; }
 main { max-width: 960px; margin: 0 auto; } 
 .center { text-align: center; } 
+
+.time
+{
+    font-size: 65pt;
+    text-align: center;
+}
+
+#description textarea
+{
+    border-radius: 5px; 
+    margin: 25px 0;
+    width: 100%;
+    padding: 10px;
+}

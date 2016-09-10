@@ -6,9 +6,8 @@ var isPaused = 1,
 
 $(document).ready(function(){
   
-  var theTimer = $("#timer1"), 
-      minutes = $("#timer1 .minutes"),
-      seconds = $("#timer1 .seconds"),
+  var minutes = $(".minutes"),
+      seconds = $(".seconds"),
       startButton =  $("#start"),
       finishButton = $("#finish"),
       pauseButton =  $("#pause");
@@ -47,7 +46,6 @@ function finishTask()
   time = Math.floor((timeElapsed / 60)) + "\" " + (timeElapsed%60) + "'"; 
   
   $("#task-log ul").append("<li>" + description + " - " + time + "</li>");
-  
   $("#description textarea").val(""); 
   resetTimer(); 
   /* write time and task to database */ 
