@@ -1,5 +1,6 @@
 class TasksController < ApplicationController
   def view
+    @task = Task.find(params[:id])
   end
 
   def index
