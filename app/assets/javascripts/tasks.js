@@ -47,7 +47,7 @@ function finishTask()
   var description = $("#description textarea").val(), 
   time = Math.floor((timeElapsed / 60)) + "m " + (timeElapsed%60) + "s"; 
   
-  $("#task-log table tbody").append("<tr><td>" + time + "</td> <td>" + description + "</td></tr>");
+  $("#task-log table tbody").prepend("<tr><td>" + time + "</td> <td>" + description + "</td></tr>").hide().fadeIn(500);
   $.post('/track', { 
       task: { 
         time: timeElapsed, 

@@ -14,7 +14,11 @@ main { max-width: 960px; margin: 0 auto; }
 #timer 
 {
   .time { font-size: 68pt; text-align: center; }
-  .controls { text-align: center; } 
+  .controls 
+  { 
+    text-align: center; 
+    button { font-size: 20px; }
+  } 
 }
 
 #description textarea
@@ -25,40 +29,36 @@ main { max-width: 960px; margin: 0 auto; }
     padding: 10px;
 }
 
-#task-log h3
-{
-    padding-top: 25px;
-}
+#finish { font-size: 20px; } 
 
-#task-log table
-{
-    display: none;
-    margin: 25px auto;     
-}
+#task-log table { display: none; transition: all 0.5s; } 
 
-#task-log thead
+#task-log table tr td
 { 
-    font-weight: bold;
-    text-decoration: underline;
+  padding: 5px;
 }
 
-#task-log  td:first-child
+#task-log table tr td:first-child
 {
-    text-align: left; 
-    min-width: 50px;
-    vertical-align: top;
+  min-width: 80px;
+  vertical-align: top;
+  padding-left: 0;
 }
 
-#task-log tbody td:nth-child(2)
+#task-log thead 
 {
-    text-align: left; 
-    padding-left: 50px;
+  font-weight: bold; 
+  font-size: 14pt;
 }
 
-#task-log thead td:nth-child(2)
+#task-log tbody
 {
-    text-align: left; 
-    padding-left: 50px;
+  font-size: 12pt;
+}
+
+#task-log .message
+{
+  font-size: 18px; 
 }
 
 ::-webkit-input-placeholder {
