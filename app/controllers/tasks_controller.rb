@@ -4,7 +4,7 @@ class TasksController < ApplicationController
   end
 
   def index
-    @tasks = Task.all 
+    @tasks = current_user.tasks 
   end
   
   def new
@@ -12,8 +12,10 @@ class TasksController < ApplicationController
   end
   
   def create
-    @task = Task.new(task_params)
-    @task.save 
+    if logged_in?
+      @task = Task.new(task_params)
+      @task.save
+    end
   end
 
   private  

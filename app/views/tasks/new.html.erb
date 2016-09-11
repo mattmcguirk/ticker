@@ -22,6 +22,7 @@
 <div class="row center">
   <div class="col-sm-4 col-sm-offset-4">
     <%= form_for(@task, url: track_path) do |f| %>
+      <%= hidden_field_tag(:user_id, current_user.id) if logged_in? %>
       <%= f.submit "Finish task", class: "btn btn-primary", id: "finish" %>
     <% end %> 
   </div>
