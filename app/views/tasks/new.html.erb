@@ -21,7 +21,7 @@
 
 <div class="row center">
   <div class="col-sm-4 col-sm-offset-4">
-    <%= form_for(@task, url: tasks_new_path) do |f| %>
+    <%= form_for(@task, url: track_path) do |f| %>
       <%= f.submit "Finish task", class: "btn btn-primary", id: "finish" %>
     <% end %> 
   </div>

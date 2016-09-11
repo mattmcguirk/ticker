@@ -29,13 +29,24 @@
         
         <div class="collapse navbar-collapse" id="main-nav">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="<%= signup_path %>">Create an Account</a></li>
-            <li><a href="#">Login</a></li>
+            
+            
+            <% if !logged_in? %> 
+            <li><%= link_to "Create an Account", signup_path %></li>
+            <li><%= link_to "Log In", login_path %></li>
+            <% else %> 
+            <li><%= link_to "Track Time", track_path %></li>
+            <li><%= link_to "Task Log", tasks_path %></li>
+            <li><%= link_to "Log Out", logout_path, method: "delete" %></li>
+            <% end %> 
           </ul>
         </div>
       </nav>
     </header>
     <main class="container-fluid">
+      <% flash.each do |message_type, message| %>
+        <div class="alert alert-<%= message_type %>"><%= message %></div>
+      <% end %>  
       <%= yield %>
       <%#= debug(params) if Rails.env.development? %>
     </main>
