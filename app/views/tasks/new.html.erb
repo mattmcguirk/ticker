@@ -1,37 +1,43 @@
 <div class="row">
-  <div class="time col-sm-12 center">
-    <span class="minutes">0</span>m
-    <span class="seconds">00</span>s
-  </div>
-</div>  
+  <div id="timer" class="col-sm-6">
+    <div class="time">
+      <span class="minutes">0</span>m
+      <span class="seconds">00</span>s
+    </div>
+    <div class="controls">
+      <button class="btn btn-default btn-sm" id="start">Start</button> 
+      <button class="btn btn-default btn-sm" id="pause">Pause</button>
+      <button class="btn btn-default btn-sm" id="reset">Reset</button>
+    </div>
+  
 
-<div class="row">
-  <div class="controls col-sm-12 center">
-    <button class="btn btn-default btn-sm" id="start">Start</button> 
-    <button class="btn btn-default btn-sm" id="pause">Pause</button>
-    <button class="btn btn-default btn-sm" id="reset">Reset</button>
-  </div>
-</div>
-
-<div class="row center">
-  <div id="description" class="col-sm-4 col-sm-offset-4">
-    <textarea rows="3" placeholder="What are you working on?"></textarea>
-  </div>
-</div>
-
-<div class="row center">
-  <div class="col-sm-4 col-sm-offset-4">
+    <div id="description">
+      <textarea rows="3" placeholder="What are you working on?"></textarea>
+    </div>
     <%= form_for(@task, url: track_path) do |f| %>
       <%= hidden_field_tag(:user_id, current_user.id) if logged_in? %>
       <%= f.submit "Finish task", class: "btn btn-primary", id: "finish" %>
     <% end %> 
   </div>
-</div>
-
-<div class="row">
-  <div id="task-log" class="col-sm-6 col-sm-offset-3 center">
-    <h3>Task Log</h3>
-    <div class="message">Nothing doin'. Get to work!</div>
+  
+  <div id="task-log" class="col-sm-6">
+    <% if logged_in? %> 
+    <h3>Recently Finished Tasks</h3>
+    <div class="message">Nothing here. Get to work!</div>
+    <% else %>
+    <h3>Welcome to Ticker!</h3>
+    <div class="message">
+      <p>
+        You're not <strong><%= link_to "logged in", login_path %></strong>. 
+        You can use Ticker, but your tasks won't be recorded permanently in 
+        the Task Log.
+      </p>
+      <p>
+        No account? <strong><%= link_to "Create one now", signup_path %></strong>. 
+        It's free!
+      </p>
+    </div>
+    <% end %> 
     <table>
       <thead>
         <tr>
