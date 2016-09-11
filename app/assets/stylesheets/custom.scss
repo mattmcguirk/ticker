@@ -1,6 +1,12 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+@mixin box_sizing {
+  -moz-box-sizing:    border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing:         border-box;
+}
+
 body { width: 100%; }
 main { max-width: 960px; margin: 0 auto; } 
 .center { text-align: center; } 
@@ -69,4 +75,15 @@ main { max-width: 960px; margin: 0 auto; }
 
 :-ms-input-placeholder {  
    text-align: center;  
+}
+
+input, textarea, select, .uneditable-input {
+  border: 1px solid #bbb;
+  width: 100%;
+  margin-bottom: 15px;
+  @include box_sizing;
+}
+
+input {
+  height: auto !important;
 }

@@ -7,15 +7,9 @@
 
 <div class="row">
   <div class="controls col-sm-12 center">
-<<<<<<< HEAD
-    <button class="btn btn-primary" id="start">Start</button> 
-    <button class="btn btn-primary" id="pause">Pause</button>
-    <button class="btn btn-primary" id="reset">Reset</button>
-=======
     <button class="btn btn-default btn-sm" id="start">Start</button> 
     <button class="btn btn-default btn-sm" id="pause">Pause</button>
     <button class="btn btn-default btn-sm" id="reset">Reset</button>
->>>>>>> master
   </div>
 </div>
 
@@ -26,9 +20,11 @@
 </div>
 
 <div class="row center">
-  <%= form_for(@task, url: tasks_new_path) do |f| %>
-    <%= f.submit "Finish task", class: "btn btn-primary", id: "finish" %>
-  <% end %> 
+  <div class="col-sm-4 col-sm-offset-4">
+    <%= form_for(@task, url: tasks_new_path) do |f| %>
+      <%= f.submit "Finish task", class: "btn btn-primary", id: "finish" %>
+    <% end %> 
+  </div>
 </div>
 
 <div class="row">
