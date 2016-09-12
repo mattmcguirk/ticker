@@ -31,32 +31,32 @@ main { max-width: 960px; margin: 0 auto; }
 
 #finish { font-size: 20px; } 
 
-#task-log table { display: none; transition: all 0.5s; } 
+#recent-tasks table { display: none; transition: all 0.5s; } 
 
-#task-log table tr td
+#recent-tasks table tr td
 { 
   padding: 5px;
 }
 
-#task-log table tr td:first-child
+#recent-tasks table tr td:first-child
 {
   min-width: 80px;
   vertical-align: top;
   padding-left: 0;
 }
 
-#task-log thead 
+#recent-tasks thead 
 {
   font-weight: bold; 
   font-size: 14pt;
 }
 
-#task-log tbody
+#recent-tasks tbody
 {
   font-size: 12pt;
 }
 
-#task-log .message
+#recent-tasks .message
 {
   font-size: 18px; 
 }
@@ -86,4 +86,27 @@ input, textarea, select, .uneditable-input {
 
 input {
   height: auto !important;
+}
+
+#task-log tr td 
+{
+  padding: 5px; 
+}
+
+#task-log tr td:first-child
+{
+  padding-left: 0;
+  min-width: 75px;
+  vertical-align: top;
+}
+
+#task-log .header, #task-log .date-header
+{
+  font-weight: bold; 
+}
+
+#task-log .date-header
+{
+  text-align: center;
+  font-size: 16pt
 }

@@ -1,18 +1,29 @@
-<table>
-  <thead>
-    <tr>
-      <td>Date</td>
-      <td>Time Taken</td>
-      <td>Description</td>
-    </tr>
-  </thead>
-  <tbody>
-  <% @tasks.each do |t| %> 
-    <tr>
-      <td><%= t.created_at %></td>
-      <td><%= t.time %></td>
-      <td><%= t.description %></td>
-    </tr>  
-  <% end %>   
-  </tbody>
-</table>
+<% currentDate = "" %> 
+<div class="row">
+  <h3 class="center">Task Log</h3>
+  <div class="col-sm-6 col-sm-offset-3">
+    <table id="task-log">
+      <thead>
+
+      </thead>
+      <tbody>
+      <% @tasks.each do |t| %> 
+        <% if t.created_at.strftime('%A, %B %d %Y') != currentDate %>
+          <tr class="date-header">
+            <td colspan="2"><%= t.created_at.strftime('%A, %B %d %Y') %></td>
+          </tr>
+          <tr class="header">
+            <td>Time</td>
+            <td>Task</td>
+          </tr>
+          <% currentDate = t.created_at.strftime('%A, %B %d %Y') %>
+        <% end %>
+        <tr>
+          <td><%= seconds_to_s(t.time) %></td>
+          <td><%= t.description %></td>
+        </tr>  
+      <% end %>   
+      </tbody>
+    </table>
+  </div>
+</div>
