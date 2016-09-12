@@ -10,42 +10,65 @@ $(document).ready(function(){
       seconds = $(".seconds"),
       startButton =  $("#start"),
       finishButton = $("#finish"),
-      pauseButton =  $("#pause"),
       resetButton = $("#reset");
 
   startButton.on("click", startTimer);
-  pauseButton.on("click", pauseTimer);  
   finishButton.on("click", finishTask);  
   resetButton.on("click", resetTimer);      
   $("#task-log .controls .delete").on("click", removeTask);    
+  
+
+  if(getCookie("timerStart") != "")
+  {
+    console.log("timerstart is not null")
+    timeElapsed = Math.floor(new Date() / 1000) - getCookie("timerStart");
+    $("#description textarea").val(getCookie("timerDescription"));
+    startTimer(); 
+  }
+
   setInterval(function() {
     if(!isPaused)
     {
       timeElapsed++;
       seconds.html(pad(timeElapsed % 60));
       minutes.html(Math.floor(timeElapsed / 60));
+      setCookie("timerDescription", $("#description textarea").val(), 365)
     }
   }, 1000);
   
 });
 
-function pauseTimer() { isPaused = 1; }
+function startTimer() 
+{ 
+  isPaused = 0;
+  if(!getCookie("timerStart"))
+  {
+    setCookie("timerStart", Math.floor(new Date() / 1000), 365);
+  }
+}
 
-function startTimer() { isPaused = 0; }
+function stopTimer()
+{
+  setCookie("timerStart", 0, 365);
+  setCookie("timerDescription", 0, 365);
+  isPaused = 1; 
+}
 
 function resetTimer() 
 {
-  pauseTimer();
+  stopTimer();
   timeElapsed = 0; 
   $(".seconds").html("00");
   $(".minutes").html("0");
   $("#description textarea").val(""); 
+  setCookie("timerStart", "", 365);
+  setCookie("timerDescription", "", 365);
 }
 
 function finishTask() 
 {
   var description = $("#description textarea").val(), 
-  time = Math.floor((timeElapsed / 60)) + "m " + (timeElapsed%60) + "s",
+  time = stringifyTime(),
   user = $("#user_id").attr("value"); 
   
   $("#recent-tasks table tbody").prepend("<tr><td>" + time + "</td> <td>" + description + "</td></tr>").hide().fadeIn(500);
@@ -72,4 +95,31 @@ function removeTask(e)
 {
   var row = $(this).parents("tr");
   row.fadeOut(750);
+}
+
+function stringifyTime()
+{
+  return Math.floor((timeElapsed / 60)) + "m " + (timeElapsed%60) + "s";
+}
+
+function setCookie(cname, cvalue, exdays) {
+    var d = new Date();
+    d.setTime(d.getTime() + (exdays*24*60*60*1000));
+    var expires = "expires="+ d.toUTCString();
+    document.cookie = cname + "=" + cvalue + "; " + expires;
+}
+
+function getCookie(cname) {
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for(var i = 0; i <ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length,c.length);
+        }
+    }
+    return "";
 }
