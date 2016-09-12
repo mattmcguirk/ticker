@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">    
     <title>Ticker</title>
     <%= csrf_meta_tags %>
 
@@ -51,5 +54,13 @@
       <%= yield %>
       <%#= debug(params) if Rails.env.development? %>
     </main>
+    <footer>
+      &copy; <%= Time.now.year %> 
+      <a href="http://www.mattmcguirk.com" target="_blank">Matt McGuirk</a>
+      <span class="bullet">&bull;</span> 
+      <a href="https://github.com/mattmcguirk/ticker" target="_blank">Fork this on GitHub</a>
+      <span class="bullet">&bull;</span> 
+      <a href="https://ko-fi.com/A231A86" target="_blank">Buy Matt a coffee</a>
+    </footer>
   </body>
 </html>

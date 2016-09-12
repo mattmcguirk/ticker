@@ -1,11 +1,13 @@
 <% currentDate = "" %> 
 <div class="row">
   <h3 class="center">Task Log</h3>
+  <% if @tasks.empty? %> 
+  <div class="message center">
+    No tasks yet. Get to work!
+  </div>
+  <% end %>
   <div class="col-sm-6 col-sm-offset-3">
     <table id="task-log">
-      <thead>
-
-      </thead>
       <tbody>
       <% @tasks.each do |t| %> 
         <% if t.created_at.strftime('%A, %B %d %Y') != currentDate %>
