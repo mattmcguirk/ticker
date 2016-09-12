@@ -113,7 +113,7 @@ input {
 {
   padding-left: 0;
   min-width: 100px;
-  vertical-align: top;
+  vertical-align: middle;
   text-align: center;
   padding-right: 30px;
 }
@@ -149,7 +149,7 @@ input {
   opacity: 1; 
 }
 
-#task-log tr td { transition: all 1s; };
+#task-log tr td { transition: all 1s; cursor: pointer; };
 
 #task-log td.task { min-width: 335px; }
 
