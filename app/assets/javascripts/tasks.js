@@ -48,7 +48,7 @@ function finishTask()
   time = Math.floor((timeElapsed / 60)) + "m " + (timeElapsed%60) + "s",
   user = $("#user_id").attr("value"); 
   
-  $("#task-log table tbody").prepend("<tr><td>" + time + "</td> <td>" + description + "</td></tr>").hide().fadeIn(500);
+  $("#recent-tasks table tbody").prepend("<tr><td>" + time + "</td> <td>" + description + "</td></tr>").hide().fadeIn(500);
   $.post('/track', { 
       task: { 
         time: timeElapsed, 
@@ -56,8 +56,8 @@ function finishTask()
         user_id: user 
       }});
   $("#description textarea").val(""); 
-  $("#task-log .message").html("")
-  $("#task-log table").show(); 
+  $("#recent-tasks .message").html("")
+  $("#recent-tasks table").show(); 
   resetTimer(); 
   return false; 
 }
