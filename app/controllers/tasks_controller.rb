@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  before_action :logged_in, only: ['index','view']
+  before_action :logged_in, only: ['index','view','destroy']
   
   def view
     @task = Task.find(params[:id])
@@ -21,7 +21,11 @@ class TasksController < ApplicationController
   end
   
   def destroy
-    Task.find(params[:id]).destroy!
+    task = Task.find(params[:id])
+
+    if current_user == task.user
+      task.destroy!
+    end
   end
 
   private  
