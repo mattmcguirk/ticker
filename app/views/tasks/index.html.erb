@@ -1,4 +1,4 @@
-<% currentDate = "" %> 
+<% current_date = "" %>
 <div class="row">
   <h2 class="center">Task Log</h2>
   <% if @tasks.empty? %> 
@@ -10,16 +10,16 @@
     <table id="task-log">
       <tbody>
       <% @tasks.each do |t| %> 
-        <% if t.created_at.strftime('%A, %B %d %Y') != currentDate %>
+        <% if formatted_day(t) != current_date %>
           <tr class="date-header">
-            <td colspan="3"><%= t.created_at.strftime('%A, %B %d, %Y') %></td>
+            <td colspan="3"><%= t.created_at.in_time_zone("America/New_York").strftime('%A, %B %d, %Y') %></td>
           </tr>
           <tr class="header">
             <td></td>
             <td class="time-elapsed">Time</td>
             <td class="task">Task</td>
           </tr>
-          <% currentDate = t.created_at.strftime('%A, %B %d %Y') %>
+          <% current_date = formatted_day(t) %>
         <% end %>
         <tr>
           <td class="controls">

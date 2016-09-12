@@ -36,6 +36,8 @@ $(document).ready(function(){
     }
   }, 1000);
   
+  $('#user_time_zone').selectTimeZone();
+  
 });
 
 function startTimer() 
@@ -122,4 +124,9 @@ function getCookie(cname) {
         }
     }
     return "";
+}
+
+function getUserTimeZone()
+{
+  return Date().getTimezoneOffset();
 }

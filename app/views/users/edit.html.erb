@@ -9,12 +9,15 @@
       <%= f.label :email %>
       <%= f.email_field :email, class: 'form-control' %>
 
+      <%= f.label :time_zone, "Time Zone" %>
+      <%= f.time_zone_select :time_zone %>
+
       <%= f.label :password %>
       <%= f.password_field :password, class: 'form-control' %>
 
       <%= f.label :password_confirmation, "Confirmation" %>
       <%= f.password_field :password_confirmation, class: 'form-control' %>
-
+      
       <%= f.submit "Save changes", class: "btn btn-primary" %>
     <% end %>
   </div>

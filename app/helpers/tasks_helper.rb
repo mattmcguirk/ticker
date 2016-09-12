@@ -36,5 +36,9 @@ module TasksHelper
             ]
     quips.shuffle.first
   end
+  
+  def formatted_day(t)
+    t.created_at.in_time_zone(current_user.time_zone).strftime('%A, %B %d %Y')
+  end
 
 end
