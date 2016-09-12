@@ -38,9 +38,9 @@
             <li><%= link_to "Create an Account", signup_path %></li>
             <li><%= link_to "Log In", login_path %></li>
             <% else %> 
-            <li><%= link_to current_user.name, edit_user_path(current_user) %></li>
             <li><%= link_to "Track Time", track_path %></li>
             <li><%= link_to "Task Log", tasks_path %></li>
+            <li><%= link_to current_user.name, edit_user_path(current_user) %></li>
             <li><%= link_to "Log Out", logout_path, method: "delete" %></li>
             <% end %> 
           </ul>
