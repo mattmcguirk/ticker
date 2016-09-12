@@ -11,7 +11,7 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body id="<%= params[:controller] + "-" + params[:action] %>">
     <header>
       <nav class="navbar navbar-default">
         <div class="navbar-header">
@@ -25,8 +25,7 @@
             <span class="icon-bar"></span>
           </button>
           <a class="navbar-brand" href="<%= root_path %>">
-            <span class="glyphicon glyphicon-time" aria-hidden="true"></span>
-            Ticker
+            <span class="brand">Ticker</span>
           </a>
         </div>
         

@@ -70,6 +70,6 @@ function pad(number)
 
 function removeTask(e)
 {
-  row = $(this).parents("tr");
-  row.fadeOut(500);
+  var row = $(this).parents("tr");
+  row.fadeOut(750);
 }

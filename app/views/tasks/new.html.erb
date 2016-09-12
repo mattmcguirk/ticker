@@ -22,14 +22,14 @@
   
   <div id="recent-tasks" class="col-sm-5">
     <% if logged_in? %> 
-    <h3 class="center">Recently Finished Tasks</h3>
+    <h2 class="center">Recently Finished Tasks</h2>
     <div class="message">
       <p>Nothing here, yet. When you finish a task it will appear here.</p> 
       <p>Here's a random thought to get the juices flowing:</p>
       <p class="quip"><%= quip %></p>
     </div>
     <% else %>
-    <h3>Welcome to Ticker!</h3>
+    <h2>Welcome to Ticker!</h2>
     <div class="message">
       <p>
         You're not <strong><%= link_to "logged in", login_path %></strong>. 

@@ -6,8 +6,11 @@
   -webkit-box-sizing: border-box;
   box-sizing:         border-box;
 }
-
-body { width: 100%; font-family: "Source Sans Pro"; }
+html {
+  position: relative;
+  min-height: 100%;
+}
+body { width: 100%; font-family: "Source Sans Pro"; margin-bottom: 30px;}
 main { max-width: 960px; margin: 0 auto; } 
 .center { text-align: center; } 
 
@@ -69,7 +72,6 @@ main { max-width: 960px; margin: 0 auto; }
   padding-top: 15px;
   font-style: italic;
   font-size: 16pt;
-  
 }
 
 ::-webkit-input-placeholder {
@@ -97,6 +99,7 @@ input, textarea, select, .uneditable-input {
 
 input {
   height: auto !important;
+  font-size: 16px;
 }
 
 #task-log tr td 
@@ -109,6 +112,8 @@ input {
   padding-left: 0;
   min-width: 75px;
   vertical-align: top;
+  text-align: center;
+  padding-right: 30px;
 }
 
 #task-log .header, #task-log .date-header
@@ -119,7 +124,14 @@ input {
 #task-log .date-header
 {
   text-align: center;
-  font-size: 16pt
+  font-weight: bold;
+  font-size: 20pt;
+}
+
+#task-log .header
+{
+  font-size: 14pt;
+  text-decoration: underline;
 }
 
 #task-log .controls a
@@ -136,6 +148,8 @@ input {
 }
 
 #task-log td.task { min-width: 335px; }
+
+#task-log tr:hover td { background-color: #e5e5e5; }
 
 footer
 {
@@ -168,5 +182,17 @@ footer a:visited
 
 footer .bullet
 {
-  padding: 0 20px;
+  padding: 0 10px;
+}
+
+.navbar-brand { font-size: 24pt; }
+
+@media only screen and (min-width : 768px)
+{
+  
+  body#tasks-new main > div.row
+  {
+    padding-top: 75px;
+  }
+  
 }
