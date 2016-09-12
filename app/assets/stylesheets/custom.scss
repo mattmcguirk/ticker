@@ -93,7 +93,7 @@ input {
   padding: 5px; 
 }
 
-#task-log tr td:first-child
+#task-log tr td.time-elapsed
 {
   padding-left: 0;
   min-width: 75px;
@@ -110,3 +110,18 @@ input {
   text-align: center;
   font-size: 16pt
 }
+
+#task-log .controls a
+{
+  color: red;
+  text-decoration: none;
+  opacity: 0;
+  transition: all 0.5s;
+}
+
+#task-log tbody tr:hover td.controls a
+{
+  opacity: 1; 
+}
+
+#task-log td.task { min-width: 335px; }

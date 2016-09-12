@@ -10,17 +10,24 @@
       <% @tasks.each do |t| %> 
         <% if t.created_at.strftime('%A, %B %d %Y') != currentDate %>
           <tr class="date-header">
-            <td colspan="2"><%= t.created_at.strftime('%A, %B %d %Y') %></td>
+            <td colspan="3"><%= t.created_at.strftime('%A, %B %d, %Y') %></td>
           </tr>
           <tr class="header">
+            <td></td>
             <td>Time</td>
             <td>Task</td>
           </tr>
           <% currentDate = t.created_at.strftime('%A, %B %d %Y') %>
         <% end %>
         <tr>
-          <td><%= seconds_to_s(t.time) %></td>
-          <td><%= t.description %></td>
+          <td class="controls">
+            <%= link_to t, method: :delete, class: "delete" do %>
+            <span class='glyphicon glyphicon-remove' aria-hidden='true'></span>
+            <% end %> 
+            </a>
+          </td>
+          <td class="time-elapsed"><%= seconds_to_s(t.time) %></td>
+          <td class="task"><%= t.description %></td>
         </tr>  
       <% end %>   
       </tbody>

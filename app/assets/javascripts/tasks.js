@@ -17,7 +17,7 @@ $(document).ready(function(){
   pauseButton.on("click", pauseTimer);  
   finishButton.on("click", finishTask);  
   resetButton.on("click", resetTimer);      
-      
+  $("#task-log .controls .delete").on("click", removeTask);    
   setInterval(function() {
     if(!isPaused)
     {
@@ -66,4 +66,10 @@ function pad(number)
 {
   if (number < 10) { return "0" + number; }
   else { return number; } 
+}
+
+function removeTask(e)
+{
+  row = $(this).parents("tr");
+  row.fadeOut(500);
 }
