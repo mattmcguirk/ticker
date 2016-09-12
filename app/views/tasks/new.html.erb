@@ -1,5 +1,5 @@
 <div class="row">
-  <div id="timer" class="col-sm-6 col-sm-offset-1">
+  <div id="timer" class="col-sm-6">
     <div class="time">
       <span class="minutes">0</span>m
       <span class="seconds">00</span>s
@@ -20,7 +20,7 @@
     <% end %> 
   </div>
   
-  <div id="recent-tasks" class="col-sm-5">
+  <div id="recent-tasks" class="col-sm-6">
     <% if logged_in? %> 
     <h2 class="center">Recently Finished Tasks</h2>
     <div class="message">
@@ -29,7 +29,7 @@
       <p class="quip"><%= quip %></p>
     </div>
     <% else %>
-    <h2>Welcome to Ticker!</h2>
+    <h2 class="center">Welcome to Ticker!</h2>
     <div class="message">
       <p>
         You're not <strong><%= link_to "logged in", login_path %></strong>. 

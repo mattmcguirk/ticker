@@ -14,6 +14,7 @@ body { width: 100%; font-family: "Source Sans Pro"; margin-bottom: 30px;}
 main { max-width: 960px; margin: 0 auto; } 
 .center { text-align: center; } 
 
+
 #timer 
 {
   .time { font-size: 68pt; text-align: center; }
@@ -71,7 +72,8 @@ main { max-width: 960px; margin: 0 auto; }
 {
   padding-top: 15px;
   font-style: italic;
-  font-size: 16pt;
+  font-size: 13pt;
+  font-weight: bold;
 }
 
 ::-webkit-input-placeholder {
@@ -110,7 +112,7 @@ input {
 #task-log tr td.time-elapsed
 {
   padding-left: 0;
-  min-width: 75px;
+  min-width: 100px;
   vertical-align: top;
   text-align: center;
   padding-right: 30px;
@@ -147,9 +149,13 @@ input {
   opacity: 1; 
 }
 
+#task-log tr td { transition: all 1s; };
+
 #task-log td.task { min-width: 335px; }
 
 #task-log tr:hover td { background-color: #e5e5e5; }
+
+#task-log tr.date-header:hover td, #task-log tr.header:hover td { background-color: transparent; }
 
 footer
 {
@@ -185,7 +191,8 @@ footer .bullet
   padding: 0 10px;
 }
 
-.navbar-brand { font-size: 24pt; }
+.navbar-brand { font-size: 24pt; font-family: "Comfortaa"; }
+
 
 @media only screen and (min-width : 768px)
 {
