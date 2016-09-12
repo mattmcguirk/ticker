@@ -10,6 +10,15 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= analytics_init if GoogleAnalytics.valid_tracker? %>
+    
+    <link rel="apple-touch-icon" sizes="76x76" href="/assets/apple-touch-icon.png">
+    <link rel="icon" type="image/png" href="/assets/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/assets/favicon-16x16.png" sizes="16x16">
+    <link rel="manifest" href="/assets/manifest.json">
+    <link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="shortcut icon" href="/assets/favicon.ico">
+    <meta name="msapplication-config" content="/assets/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">    
   </head>
 
   <body id="<%= params[:controller] + "-" + params[:action] %>">
@@ -26,7 +35,7 @@
             <span class="icon-bar"></span>
           </button>
           <a class="navbar-brand" href="<%= root_path %>">
-            <span class="brand">Ticker</span>
+            <span class="brand">Ticker<sup>Alpha</sup></span>
           </a>
         </div>
         
