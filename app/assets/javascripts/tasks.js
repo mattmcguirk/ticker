@@ -81,7 +81,8 @@ function finishTask()
         user_id: user 
       }});
   $("#description textarea").val(""); 
-  $("#recent-tasks .message").html("")
+  $("#recent-tasks .message").html("");
+  $("#recent-tasks h2").html("Recent Tasks");
   $("#recent-tasks table").show(); 
   resetTimer(); 
   return false; 
