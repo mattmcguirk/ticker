@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'categories/create'
+
+  get 'categories/destroy'
+
   get  '/tasks',       to: 'tasks#index'
   delete '/tasks/:id', to: 'tasks#destroy'
   get  '/track',       to: 'tasks#new'

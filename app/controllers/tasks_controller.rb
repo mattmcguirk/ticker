@@ -10,6 +10,7 @@ class TasksController < ApplicationController
   end
   
   def new
+    @categories = current_user.categories 
     @task = Task.new
   end
   
