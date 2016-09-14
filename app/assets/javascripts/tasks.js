@@ -40,6 +40,10 @@ $(document).ready(function(){
   
   $('#user_time_zone').selectTimeZone();
   
+  $('.centerSelect').each(function(){
+  centerSelect($(this));
+});
+
 });
 
 function startTimer() 
@@ -92,14 +96,21 @@ function finishTask()
 function categoryChange()
 {
   var newCategory = "",
-  categorySelect = $(this);
+  categorySelect = $(this),
+  user = $("#user_id").attr("value"); 
+
   
   if(categorySelect.val() == "add")
   {
-    newCategory = prompt("Name your new category:");  
+    newCategory = prompt("Name your new category:");
+    $.post('/categories/create', {category: { name: newCategory, user_id: user }})
     categorySelect.prepend("<option value='" + newCategory + "'>" + newCategory +"</option>").select();
     categorySelect.val(newCategory);
   }
+  
+  centerSelect(categorySelect);
+
+  
 }
 
 function removeTask()
@@ -145,3 +156,14 @@ function getUserTimeZone()
   return Date().getTimezoneOffset();
 }
 
+function getTextWidth(txt) {
+  var $elm = $('<span class="tempforSize">'+txt+'</span>').prependTo("body");
+  var elmWidth = $elm.width();
+  $elm.remove();
+  return elmWidth;
+}
+function centerSelect($elm) {
+    var optionWidth = getTextWidth($elm.children(":selected").html())
+    var emptySpace =   $elm.width()- optionWidth;
+    $elm.css("text-indent", (emptySpace/2) - 10);// -10 for some browers to remove the right toggle control width
+}

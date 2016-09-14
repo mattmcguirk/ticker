@@ -2,7 +2,8 @@ class CategoriesController < ApplicationController
   before_action :logged_in_user
   
   def create
-    Category.create(category_params)
+    new_category = Category.create(category_params)
+    render json: new_category.id 
   end
 
   def destroy
@@ -13,6 +14,13 @@ class CategoriesController < ApplicationController
     
     def category_params
       params.require(:category).permit(:name, :user_id)
+    end
+
+    def logged_in_user
+      unless logged_in?
+        flash[:danger] = "Please log in."
+        redirect_to login_url
+      end
     end
     
 end
