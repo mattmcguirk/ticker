@@ -98,19 +98,28 @@ function categoryChange()
   var newCategory = "",
   categorySelect = $(this),
   user = $("#user_id").attr("value"); 
-
+  
+  $("option#select").detach(); 
   
   if(categorySelect.val() == "add")
   {
     newCategory = prompt("Name your new category:");
-    $.post('/categories/create', {category: { name: newCategory, user_id: user }})
-    categorySelect.prepend("<option value='" + newCategory + "'>" + newCategory +"</option>").select();
-    categorySelect.val(newCategory);
+    if(newCategory)
+    {
+      $.post('/categories/create', {category: { name: newCategory, user_id: user }}, newCategorySuccess)
+    }
   }
   
   centerSelect(categorySelect);
+}
 
-  
+function newCategorySuccess(data)
+{
+  categorySelect = $("#category"); 
+  categorySelect.prepend("<option value='" + data.id + "'>" + data.name +"</option>");
+  categorySelect.val(data.id);
+  console.log(data);
+  console.log(data.name);
 }
 
 function removeTask()
