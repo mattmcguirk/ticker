@@ -28,9 +28,9 @@ main { max-width: 960px; margin: 0 auto; }
 #description textarea
 {
     border-radius: 5px; 
-    margin: 25px 0;
     width: 100%;
     padding: 10px;
+    margin-top: 25px;
 }
 
 #finish { font-size: 20px; } 
@@ -74,22 +74,6 @@ main { max-width: 960px; margin: 0 auto; }
   font-style: italic;
   font-size: 13pt;
   font-weight: bold;
-}
-
-::-webkit-input-placeholder {
-   text-align: center;
-}
-
-:-moz-placeholder { /* Firefox 18- */
-   text-align: center;  
-}
-
-::-moz-placeholder {  /* Firefox 19+ */
-   text-align: center;  
-}
-
-:-ms-input-placeholder {  
-   text-align: center;  
 }
 
 input, textarea, select, .uneditable-input {
@@ -215,4 +199,20 @@ footer .bullet
     padding-top: 75px;
   }
   
+}
+
+#task-form
+{
+  text-align: center;
+}
+
+#finish
+{
+  width: 100%; 
+}
+
+select#category
+{
+   min-width: 136px;
+   width: 100%;
 }

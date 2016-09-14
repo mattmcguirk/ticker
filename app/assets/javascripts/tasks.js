@@ -1,4 +1,5 @@
 /* global isPaused */ 
+/* global timeElapsed */ 
 /* global $ */ 
 
 var isPaused = 1,
@@ -10,13 +11,14 @@ $(document).ready(function(){
       seconds = $(".seconds"),
       startButton =  $("#start"),
       finishButton = $("#finish"),
-      resetButton = $("#reset");
+      resetButton = $("#reset"),
+      categorySelect = $("#category");
 
   startButton.on("click", startTimer);
   finishButton.on("click", finishTask);  
   resetButton.on("click", resetTimer);      
   $("#task-log .controls .delete").on("click", removeTask);    
-  
+  categorySelect.on("change", categoryChange)
 
   if(getCookie("timerStart") != "")
   {
@@ -87,16 +89,28 @@ function finishTask()
   return false; 
 }
 
+function categoryChange()
+{
+  var newCategory = "",
+  categorySelect = $(this);
+  
+  if(categorySelect.val() == "add")
+  {
+    newCategory = prompt("Name your new category:");  
+    categorySelect.prepend("<option value='" + newCategory + "'>" + newCategory +"</option>").select();
+    categorySelect.val(newCategory);
+  }
+}
+
+function removeTask()
+{
+  $(this).parents("tr").fadeOut(750);
+}
+
 function pad(number)
 {
   if (number < 10) { return "0" + number; }
   else { return number; } 
-}
-
-function removeTask(e)
-{
-  var row = $(this).parents("tr");
-  row.fadeOut(750);
 }
 
 function stringifyTime()
@@ -130,3 +144,4 @@ function getUserTimeZone()
 {
   return Date().getTimezoneOffset();
 }
+

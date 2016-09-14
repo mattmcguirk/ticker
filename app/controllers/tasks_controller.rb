@@ -10,7 +10,10 @@ class TasksController < ApplicationController
   end
   
   def new
-    @categories = current_user.categories 
+    if logged_in? 
+      @categories = current_user.categories 
+      @category_options = current_user.categories.all.map{ |c| [ c.name, c.id ] }
+    end
     @task = Task.new
   end
   
