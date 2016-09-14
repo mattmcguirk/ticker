@@ -8,7 +8,7 @@ module TasksHelper
     formattedTime = "" 
     
     hours = (elapsedTime / 3600).floor.to_s
-    minutes = (elapsedTime / 60).floor.to_s
+    minutes = ((elapsedTime % 3600).floor / 60).floor.to_s
     seconds = pad((elapsedTime % 60).to_s)
     formattedTime += hours + "h " if hours.to_i > 0 
     formattedTime += minutes + "m " if minutes.to_i > 0 

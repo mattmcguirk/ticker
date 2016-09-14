@@ -1,6 +1,6 @@
 $(document).ready(function(){
   
-  $("#category-list .controls .delete").on("click", removeCategory);    
+  $("#category-list .delete").on("click", removeCategory);    
 
 });
 

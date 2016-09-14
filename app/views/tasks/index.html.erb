@@ -1,12 +1,12 @@
 <% current_date = "" %>
 <div class="row">
-  <h2 class="center">Task Log</h2>
   <% if @tasks.empty? %> 
   <div class="message center">
     No tasks yet. Get to work!
   </div>
   <% end %>
   <div class="col-sm-6 col-sm-offset-3">
+    <h2 class="center">Task Log</h2>
     <table id="task-log">
       <tbody>
       <% @tasks.each do |t| %> 

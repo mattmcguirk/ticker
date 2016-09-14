@@ -1,7 +1,9 @@
 #category-list 
 {
-  tr td { transition: all 1s; cursor: pointer; };
-  td.task { min-width: 335px; }
+  min-width: 100%;
+  tr td.category { text-align: center; } 
+  tr td.controls { width: 20px; } 
+  tr td { transition: all 1s; cursor: pointer; padding: 5px; };
   tr:hover td { background-color: #e5e5e5; }
   tr.date-header:hover td, tr.header:hover td { background-color: transparent; }
   .controls a
