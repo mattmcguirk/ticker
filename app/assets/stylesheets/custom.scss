@@ -96,10 +96,9 @@ input {
 #task-log tr td.time-elapsed
 {
   padding-left: 0;
-  min-width: 100px;
+  min-width: 40px;
   vertical-align: middle;
   text-align: center;
-  padding-right: 30px;
 }
 
 #task-log .header, #task-log .date-header
@@ -120,27 +119,21 @@ input {
   text-decoration: underline;
 }
 
-#task-log .controls a
+#task-log 
 {
-  color: red;
-  text-decoration: none;
-  opacity: 0;
-  transition: all 0.5s;
+  .controls a
+  {
+    color: red;
+    text-decoration: none;
+    opacity: 0;
+    transition: all 0.5s;
+  }
+  td.category { text-align: center; } 
+  tbody tr:hover td.controls a { opacity: 1; }
+  tr td { transition: all 1s; cursor: pointer; };
+  tr:hover td { background-color: #e5e5e5; }
+  tr.date-header:hover td, #task-log tr.header:hover td { background-color: transparent; }
 }
-
-#task-log tbody tr:hover td.controls a
-{
-  opacity: 1; 
-}
-
-#task-log tr td { transition: all 1s; cursor: pointer; };
-
-#task-log td.task { min-width: 335px; }
-
-#task-log tr:hover td { background-color: #e5e5e5; }
-
-#task-log tr.date-header:hover td, #task-log tr.header:hover td { background-color: transparent; }
-
 footer
 {
     position: absolute;

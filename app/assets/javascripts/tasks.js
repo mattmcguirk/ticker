@@ -42,7 +42,7 @@ $(document).ready(function(){
   
   $('.centerSelect').each(function(){
   centerSelect($(this));
-});
+  });
 
 });
 
@@ -77,14 +77,16 @@ function finishTask()
 {
   var description = $("#description textarea").val(), 
   time = stringifyTime(),
-  user = $("#user_id").attr("value"); 
+  user = $("#user_id").attr("value"), 
+  category = $("#category").val(); 
   
   $("#recent-tasks table tbody").prepend("<tr><td>" + time + "</td> <td>" + description + "</td></tr>").hide().fadeIn(500);
   $.post('/track', { 
       task: { 
         time: timeElapsed, 
         description: description, 
-        user_id: user 
+        user_id: user, 
+        category_id: category
       }});
   $("#description textarea").val(""); 
   $("#recent-tasks .message").html("")
@@ -104,9 +106,10 @@ function categoryChange()
   if(categorySelect.val() == "add")
   {
     newCategory = prompt("Name your new category:");
+    console.log(newCategory);
     if(newCategory)
     {
-      $.post('/categories/create', {category: { name: newCategory, user_id: user }}, newCategorySuccess)
+      $.post('/categories', {category: { name: newCategory, user_id: user }}, newCategorySuccess)
     }
   }
   
@@ -118,8 +121,7 @@ function newCategorySuccess(data)
   categorySelect = $("#category"); 
   categorySelect.prepend("<option value='" + data.id + "'>" + data.name +"</option>");
   categorySelect.val(data.id);
-  console.log(data);
-  console.log(data.name);
+  centerSelect(categorySelect);
 }
 
 function removeTask()

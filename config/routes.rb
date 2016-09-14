@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  post '/categories',  to: 'categories#post'
+  post '/categories',  to: 'categories#create'
   delete '/categories',to: 'categories#destroy'
   get '/categories',   to: 'categories#index' 
   get  '/tasks',       to: 'tasks#index'

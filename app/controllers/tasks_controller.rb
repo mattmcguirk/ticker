@@ -34,7 +34,7 @@ class TasksController < ApplicationController
 
   private  
     def task_params
-      params.require(:task).permit(:time, :description, :user_id)
+      params.require(:task).permit(:time, :description, :user_id, :category_id)
     end
   
     def logged_in
