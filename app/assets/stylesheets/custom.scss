@@ -96,7 +96,7 @@ input {
 #task-log tr td.time-elapsed
 {
   padding-left: 0;
-  min-width: 70px;
+  min-width: 80px;
   vertical-align: middle;
   text-align: center;
 }
@@ -134,6 +134,8 @@ input {
   tr td { transition: all 1s; cursor: pointer; };
   tr:hover td { background-color: #e5e5e5; }
   tr.date-header:hover td, #task-log tr.header:hover td { background-color: transparent; }
+  tr.date-header td { padding-top: 40px; }
+  tr.date-header:first-child td { padding-top: 0; } 
 }
 footer
 {
