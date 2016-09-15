@@ -31,6 +31,10 @@ class TasksController < ApplicationController
       task.destroy!
     end
   end
+  
+  def letsencrypt
+    render text: "f1mc-m1dtDwW4aDJqookzR72XshgIb9Kdkm7OplvZUc.cZYn8Om-_s5csYBl2jfjdmHAKgYsi5GzvKxPrwkJXcc"
+  end
 
   private  
     def task_params

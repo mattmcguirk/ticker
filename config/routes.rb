@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get '/.well-known/acme-challenge/:id' => 'tasks#letsencrypt'
+
   post '/categories',  to: 'categories#create'
   delete '/categories',to: 'categories#destroy'
   get '/categories',   to: 'categories#index' 
