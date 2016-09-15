@@ -18,11 +18,14 @@ $(document).ready(function(){
   finishButton.on("click", finishTask);  
   resetButton.on("click", resetTimer);      
   $("#task-log .controls .delete").on("click", removeTask);    
-  categorySelect.on("change", categoryChange)
-
+  categorySelect.on("change", categoryChange);
+  $(".task-log .date-header").on("click", toggleTable);
+  $(".task-log:first-of-type thead span.glyphicon")
+                                             .removeClass("glyphicon-chevron-down")
+                                             .addClass("glyphicon-chevron-up");
+  
   if(getCookie("timerStart") != "")
   {
-    console.log("timerstart is not null")
     timeElapsed = Math.floor(new Date() / 1000) - getCookie("timerStart");
     $("#description textarea").val(getCookie("timerDescription"));
     startTimer(); 
@@ -34,12 +37,11 @@ $(document).ready(function(){
       timeElapsed++;
       seconds.html(pad(timeElapsed % 60));
       minutes.html(Math.floor(timeElapsed / 60));
-      setCookie("timerDescription", $("#description textarea").val(), 365)
+      setCookie("timerDescription", $("#description textarea").val(), 365);
     }
   }, 1000);
   
   $('#user_time_zone').selectTimeZone();
-  
   $('.centerSelect').each(function(){
   centerSelect($(this));
   });
@@ -78,7 +80,7 @@ function finishTask()
   var description = $("#description textarea").val(), 
   time = stringifyTime(),
   user = $("#user_id").attr("value"), 
-  category = $("#category").val(); 
+  category = $("#category").val(), 
   categoryText = $("#category option:selected").text(); 
   
   $("#recent-tasks table tbody").prepend("<tr><td>" + categoryText + "</td><td>" + time + "</td> <td>" + description + "</td></tr>").hide().fadeIn(500);
@@ -120,7 +122,7 @@ function categoryChange()
 
 function newCategorySuccess(data)
 {
-  categorySelect = $("#category"); 
+  var categorySelect = $("#category"); 
   categorySelect.prepend("<option value='" + data.id + "'>" + data.name +"</option>");
   categorySelect.val(data.id);
   centerSelect(categorySelect);
@@ -175,8 +177,28 @@ function getTextWidth(txt) {
   $elm.remove();
   return elmWidth;
 }
+
 function centerSelect($elm) {
-    var optionWidth = getTextWidth($elm.children(":selected").html())
+    var optionWidth = getTextWidth($elm.children(":selected").html());
     var emptySpace =   $elm.width()- optionWidth;
     $elm.css("text-indent", (emptySpace/2) - 10);// -10 for some browers to remove the right toggle control width
+}
+
+function toggleTable()
+{
+  var tableBody = $(this).parents("table").children("tbody"),
+      headerGlyph = $(this).find(".glyphicon");
+
+
+  tableBody.toggle(); 
+  if(tableBody.is(":visible"))
+  {
+    console.log("visible");
+    headerGlyph.removeClass("glyphicon-chevron-down").addClass("glyphicon-chevron-up");
+  }
+  else
+  {
+    console.log("not visible");
+    headerGlyph.removeClass("glyphicon-chevron-up").addClass("glyphicon-chevron-down");    
+  }
 }

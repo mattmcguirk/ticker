@@ -8,34 +8,48 @@
         No tasks yet. Get to work!
       </div>
       <% end %>
-    <table id="task-log">
-      <tbody>
       <% @tasks.each do |t| %> 
-        <% if formatted_day(t) != current_date %>
+      <% if formatted_day(t) != current_date  
+        current_date = formatted_day(t)
+      %>
+      <table class="task-log">
+         <thead>         
           <tr class="date-header">
-            <td colspan="4"><%= t.created_at.in_time_zone("America/New_York").strftime('%A, %B %d, %Y') %></td>
+            <td colspan="5">
+              <%= formatted_day(t) %>
+              <span class='glyphicon glyphicon-chevron-down' aria-hidden='true'></span>
+            </td>
           </tr>
-          <tr class="header">
-            <td><!-- controls --></td>
-            <td class="category">Category</td>
-            <td class="time-elapsed">Time</td>
-            <td class="task">Task</td>
-          </tr>
-          <% current_date = formatted_day(t) %>
-        <% end %>
+        </thead>
+        <tr class="header">
+          <td><!-- controls --></td>
+          <td class="time">Time</td>
+          <td class="category">Category</td>
+          <td class="time-elapsed">Duration</td>
+          <td class="task">Task</td>
+        </tr>
+        <tbody>
+        <% end %> 
         <tr>
           <td class="controls">
             <%= link_to t, method: :delete, class: "delete" do %>
             <span class='glyphicon glyphicon-remove' aria-hidden='true'></span>
             <% end %> 
-            </a>
           </td>
+          <td class="time"><%= t.created_at.in_time_zone("America/New_York").strftime('%l:%M %P') %></td>
           <td class="category"><%= if t.category.nil? then "-" else t.category.name end %></td>
           <td class="time-elapsed"><%= seconds_to_s(t.time) %></td>
           <td class="task"><%= t.description %></td>
         </tr>  
-      <% end %>   
+      <% if formatted_day(t) != current_date  %>
       </tbody>
+      </table>
+      <% 
+         end
+         current_date = formatted_day(t) 
+      %>
+    <% end %>
+    </tbody>
     </table>
   </div>
 </div>

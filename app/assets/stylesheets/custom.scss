@@ -88,40 +88,47 @@ input {
   font-size: 16px;
 }
 
-#task-log tr td 
-{
-  padding: 5px; 
-}
 
-#task-log tr td.time-elapsed
-{
-  padding-left: 0;
-  min-width: 80px;
-  vertical-align: middle;
-  text-align: center;
-}
+.task-log:first-of-type tbody { display: block; } 
 
-#task-log .header, #task-log .date-header
+.task-log 
 {
-  font-weight: bold; 
-}
-
-#task-log .date-header
-{
-  text-align: center;
-  font-weight: bold;
-  font-size: 14pt;
-}
-
-#task-log .header
-{
-  font-size: 10pt;
-  text-decoration: underline;
-}
-
-#task-log 
-{
+  tbody { display: none; } 
+  
   width: 100%;
+  margin-bottom: 50px;
+
+  tr td { padding: 5px;}
+  
+  tr.header td.time { padding-left: 20px; }
+  
+  tr td.time-elapsed 
+  {
+    padding-left: 0;
+    min-width: 80px;
+    vertical-align: middle;
+    text-align: center;
+  }
+
+  .header, .date-header
+  {
+    font-weight: bold; 
+  }
+  
+  .date-header
+  {
+    text-align: center;
+    font-weight: bold;
+    font-size: 14pt;
+  }
+
+
+  .header
+  {
+    font-size: 10pt;
+    text-decoration: underline;
+  }
+  
   .controls a
   {
     color: red;
@@ -133,10 +140,16 @@ input {
   tbody tr:hover td.controls a { opacity: 1; }
   tr td { transition: all 1s; cursor: pointer; };
   tr:hover td { background-color: #e5e5e5; }
-  tr.date-header:hover td, #task-log tr.header:hover td { background-color: transparent; }
+  tr.date-header:hover td, .task-log tr.header:hover td { background-color: transparent; }
   tr.date-header td { padding-top: 40px; }
   tr.date-header:first-child td { padding-top: 0; } 
   tr.header:hover td { background-color: transparent; } 
+  
+  .glyphicon-chevron-up, .glyphicon-chevron-down 
+  { 
+    font-size: 15px; 
+    padding-left: 10px; 
+  }
 }
 footer
 {
