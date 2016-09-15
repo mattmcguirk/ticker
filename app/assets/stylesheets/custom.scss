@@ -44,7 +44,7 @@ main { max-width: 960px; margin: 0 auto; }
   padding: 5px;
 }
 
-#recent-tasks table tr td:first-child
+#recent-tasks table tr td.time
 {
   min-width: 80px;
   vertical-align: top;
