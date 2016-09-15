@@ -61,7 +61,7 @@
     <table>
       <thead>
         <tr>
-          <td class="category">Category</td>
+          <% if logged_in? %> <td class="category">Category</td> <% end %> 
           <td class="time">Time</td>
           <td class="task">Task</td>
         </tr>

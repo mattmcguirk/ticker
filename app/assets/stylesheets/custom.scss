@@ -136,6 +136,7 @@ input {
   tr.date-header:hover td, #task-log tr.header:hover td { background-color: transparent; }
   tr.date-header td { padding-top: 40px; }
   tr.date-header:first-child td { padding-top: 0; } 
+  tr.header:hover td { background-color: transparent; } 
 }
 footer
 {
