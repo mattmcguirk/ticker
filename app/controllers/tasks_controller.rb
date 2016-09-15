@@ -10,6 +10,10 @@ class TasksController < ApplicationController
   end
   
   def new
+    if logged_in? 
+      @categories = current_user.categories 
+      @category_options = current_user.categories.all.map{ |c| [ c.name, c.id ] }
+    end
     @task = Task.new
   end
   
@@ -30,7 +34,7 @@ class TasksController < ApplicationController
 
   private  
     def task_params
-      params.require(:task).permit(:time, :description, :user_id)
+      params.require(:task).permit(:time, :description, :user_id, :category_id)
     end
   
     def logged_in

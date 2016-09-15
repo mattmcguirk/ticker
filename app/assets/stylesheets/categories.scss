@@ -1,0 +1,17 @@
+#category-list 
+{
+  min-width: 100%;
+  tr td.category { text-align: center; } 
+  tr td.controls { width: 20px; } 
+  tr td { transition: all 1s; cursor: pointer; padding: 5px; };
+  tr:hover td { background-color: #e5e5e5; }
+  tr.date-header:hover td, tr.header:hover td { background-color: transparent; }
+  .controls a
+  {
+    color: red;
+    text-decoration: none;
+    opacity: 0;
+    transition: all 0.5s;
+  }
+  tr:hover td.controls a { opacity: 1; }
+}

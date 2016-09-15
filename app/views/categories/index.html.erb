@@ -1,0 +1,26 @@
+<% current_date = "" %>
+<div class="row">
+  <div class="col-sm-6 col-sm-offset-3">
+    <h2 class="center">My Categories</h2>
+    <% if @categories.empty? %> 
+    <div class="message center">
+      You don't have any categories. 
+    </div>
+    <% end %>
+    <table id="category-list">
+      <tbody>
+      <% @categories.each do |c| %> 
+        <tr>
+          <td class="controls">
+            <%= link_to c, method: :delete, class: "delete" do %>
+            <span class='glyphicon glyphicon-remove' aria-hidden='true'></span>
+            <% end %> 
+            </a>
+          </td>
+          <td class="category"><%= c.name %></td>
+        </tr>  
+      <% end %>   
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -28,9 +28,9 @@ main { max-width: 960px; margin: 0 auto; }
 #description textarea
 {
     border-radius: 5px; 
-    margin: 25px 0;
     width: 100%;
     padding: 10px;
+    margin-top: 25px;
 }
 
 #finish { font-size: 20px; } 
@@ -76,22 +76,6 @@ main { max-width: 960px; margin: 0 auto; }
   font-weight: bold;
 }
 
-::-webkit-input-placeholder {
-   text-align: center;
-}
-
-:-moz-placeholder { /* Firefox 18- */
-   text-align: center;  
-}
-
-::-moz-placeholder {  /* Firefox 19+ */
-   text-align: center;  
-}
-
-:-ms-input-placeholder {  
-   text-align: center;  
-}
-
 input, textarea, select, .uneditable-input {
   border: 1px solid #bbb;
   width: 100%;
@@ -112,10 +96,9 @@ input {
 #task-log tr td.time-elapsed
 {
   padding-left: 0;
-  min-width: 100px;
+  min-width: 40px;
   vertical-align: middle;
   text-align: center;
-  padding-right: 30px;
 }
 
 #task-log .header, #task-log .date-header
@@ -136,27 +119,22 @@ input {
   text-decoration: underline;
 }
 
-#task-log .controls a
+#task-log 
 {
-  color: red;
-  text-decoration: none;
-  opacity: 0;
-  transition: all 0.5s;
+  width: 100%;
+  .controls a
+  {
+    color: red;
+    text-decoration: none;
+    opacity: 0;
+    transition: all 0.5s;
+  }
+  td.category { text-align: center; } 
+  tbody tr:hover td.controls a { opacity: 1; }
+  tr td { transition: all 1s; cursor: pointer; };
+  tr:hover td { background-color: #e5e5e5; }
+  tr.date-header:hover td, #task-log tr.header:hover td { background-color: transparent; }
 }
-
-#task-log tbody tr:hover td.controls a
-{
-  opacity: 1; 
-}
-
-#task-log tr td { transition: all 1s; cursor: pointer; };
-
-#task-log td.task { min-width: 335px; }
-
-#task-log tr:hover td { background-color: #e5e5e5; }
-
-#task-log tr.date-header:hover td, #task-log tr.header:hover td { background-color: transparent; }
-
 footer
 {
     position: absolute;
@@ -217,6 +195,7 @@ footer .bullet
   
 }
 
+<<<<<<< HEAD
 #tasks-new .message
 {
   font-size: 12pt;
@@ -225,4 +204,35 @@ footer .bullet
 #tasks-new .message p
 {
   margin-bottom: 50px;
+=======
+#task-form
+{
+  text-align: center;
+}
+
+#finish
+{
+  width: 100%; 
+}
+
+select#category
+{
+   min-width: 136px;
+   width: 100%;
+}
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+text-align: center;
+}
+::-moz-placeholder { /* Firefox 19+ */
+text-align: center;
+  
+}
+:-ms-input-placeholder { /* IE 10+ */
+text-align: center;
+}
+:-moz-placeholder { /* Firefox 18- */
+text-align: center;
+  
+>>>>>>> add-categories
 }
