@@ -32,10 +32,6 @@ class TasksController < ApplicationController
     end
   end
   
-  def letsencrypt
-    render text: "f1mc-m1dtDwW4aDJqookzR72XshgIb9Kdkm7OplvZUc.cZYn8Om-_s5csYBl2jfjdmHAKgYsi5GzvKxPrwkJXcc"
-  end
-
   private  
     def task_params
       params.require(:task).permit(:time, :description, :user_id, :category_id)
