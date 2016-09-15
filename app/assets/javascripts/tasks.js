@@ -193,12 +193,10 @@ function toggleTable()
   tableBody.toggle(); 
   if(tableBody.is(":visible"))
   {
-    console.log("visible");
     headerGlyph.removeClass("glyphicon-chevron-down").addClass("glyphicon-chevron-up");
   }
   else
   {
-    console.log("not visible");
     headerGlyph.removeClass("glyphicon-chevron-up").addClass("glyphicon-chevron-down");    
   }
 }

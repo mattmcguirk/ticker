@@ -1,4 +1,7 @@
-<% current_date = "" %>
+<% 
+  current_date = ""
+  first_loop = 1
+%>
 <div class="row">
 
   <div class="col-sm-6 col-sm-offset-3">
@@ -12,6 +15,10 @@
       <% if formatted_day(t) != current_date  
         current_date = formatted_day(t)
       %>
+        <% if first_loop == 0 %>
+        </tbody>
+      </table> 
+      <% end %>
       <table class="task-log">
          <thead>         
           <tr class="date-header">
@@ -46,7 +53,8 @@
       </table>
       <% 
          end
-         current_date = formatted_day(t) 
+         current_date = formatted_day(t)
+         first_loop = 0
       %>
     <% end %>
     </tbody>
