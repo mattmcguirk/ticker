@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'reports/home'
+
+  get 'reports/export_csv'
+
   post '/categories',  to: 'categories#create'
   delete '/categories',to: 'categories#destroy'
   get '/categories',   to: 'categories#index' 

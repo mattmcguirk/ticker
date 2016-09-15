@@ -1,0 +1,15 @@
+<div class="row">
+  
+  <div class="col-sm-6 col-sm-offset-3">
+    <h2 class="center">Reports</h2>
+    <ul>
+      <li>
+        <strong>Total time tracked:</strong> <%= seconds_to_s(current_user.tasks.sum(:time)) %>
+      </li>
+      <li>
+        <strong>Longest task:</strong> <%= seconds_to_s(current_user.tasks.pluck(:time).max) %>
+      </li>
+    </ul>
+  </div>
+  
+</div>
