@@ -1,0 +1,34 @@
+<div class="row">
+  <div class="col-sm-6 col-sm-offset-3">
+    <h2 class="center">Users</h2>
+    <% if @users.empty? %> 
+    <div class="message center">  
+      There are no users, somehow.
+    </div>
+    <% end %>
+    <table id="user-list">
+      <thead>
+        <td class="delete"></td>
+        <td class="user_id">ID</td>
+        <td class="name">Name</td>
+        <td class="email">Email</a></td>
+        <td class="tasks">Tasks</td>
+      </thead>
+      <tbody>
+      <% @users.each do |u| %> 
+        <tr>
+          <td class="delete">
+            <%= link_to u, method: :delete, class: "delete" do %>
+              <span class='glyphicon glyphicon-remove' aria-hidden='true'></span>
+            <% end %> 
+          </td>
+          <td class="user_id"><%= u.id %></td>
+          <td class="name"><%= u.name %></td>
+          <td class="email"><a href="mailto:<%= u.email %>"><%= u.email %></td>
+          <td class="tasks"><%= u.tasks.count %></td>
+        </tr>  
+      <% end %>   
+      </tbody>
+    </table>
+  </div>
+</div>
