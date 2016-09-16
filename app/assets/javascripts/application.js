@@ -21,19 +21,19 @@
 var isPaused = 1,
     timeElapsed = 0;
 
-$("body").css("transition","none");
-
 $(document).on('ready', function(){
   
   var minutes = $(".minutes"),
       seconds = $(".seconds"),
       startButton =  $("#start"),
+      pauseButton =  $("#pause"),
       finishButton = $("#finish"),
       resetButton = $("#reset"),
       categorySelect = $("#category"),
       nightModeControl = $("#night-mode-control");
 
   startButton.on("click", startTimer);
+  pauseButton.on("click", pauseTimer);
   finishButton.on("click", finishTask);  
   resetButton.on("click", resetTimer);      
   $(".task-log .controls .delete").on("click", removeTask);    
@@ -49,9 +49,9 @@ $(document).on('ready', function(){
     nightMode(); 
   }
   
-  if(getCookie("timerStart") != "")
+  if(getCookie("timeElapsed") != "")
   {
-    timeElapsed = Math.floor(new Date() / 1000) - getCookie("timerStart");
+    timeElapsed = getCookie("timeElapsed");
     $("#description textarea").val(getCookie("timerDescription"));
     startTimer(); 
   }
@@ -60,9 +60,9 @@ $(document).on('ready', function(){
     if(!isPaused)
     {
       timeElapsed++;
-      seconds.html(pad(timeElapsed % 60));
-      minutes.html(Math.floor(timeElapsed / 60));
+      renderTime(); 
       setCookie("timerDescription", $("#description textarea").val(), 365);
+      setCookie("timeElapsed", timeElapsed, 365);
     }
   }, 1000);
 
@@ -73,18 +73,14 @@ $(document).on('ready', function(){
 
 });
 
-function startTimer() 
-{ 
-  isPaused = 0;
-  if(!getCookie("timerStart"))
-  {
-    setCookie("timerStart", Math.floor(new Date() / 1000), 365);
-  }
-}
+function renderTime() { $(".time").html(stringifyTime(timeElapsed)); }
+
+function startTimer() { isPaused = 0; }
+function pauseTimer() { isPaused = 1; }
 
 function stopTimer()
 {
-  setCookie("timerStart", 0, 365);
+  setCookie("timeElapsed", 0, 365);
   setCookie("timerDescription", 0, 365);
   isPaused = 1; 
 }
@@ -93,10 +89,9 @@ function resetTimer()
 {
   stopTimer();
   timeElapsed = 0; 
-  $(".seconds").html("00");
-  $(".minutes").html("0");
+  renderTime();
   $("#description textarea").val(""); 
-  setCookie("timerStart", "", 365);
+  setCookie("timeElapsed", "", 365);
   setCookie("timerDescription", "", 365);
 }
 
@@ -145,7 +140,6 @@ function categoryChange()
       $.post('/categories', {category: { name: newCategory, user_id: user }}, newCategorySuccess)
     }
   }
-  
   centerSelect(categorySelect);
 }
 
@@ -159,7 +153,6 @@ function newCategorySuccess(data)
 
 function removeTask()
 {
-  console.log("remove row");
   $(this).parents("tr").fadeOut(750);
 }
 
@@ -171,7 +164,13 @@ function pad(number)
 
 function stringifyTime()
 {
-  return Math.floor((timeElapsed / 60)) + "m " + (timeElapsed%60) + "s";
+  var timeString = "";
+  
+  if(timeElapsed > 3600) { timeString += Math.floor(timeElapsed / 3600) + "h "; }
+  if(timeElapsed > 60) { timeString += Math.floor(Math.floor(timeElapsed % 3600) / 60) + "m "; }
+  timeString += pad(timeElapsed % 60) + "s"
+  if(timeElapsed == 0) { timeString = "--h --m --s"; } 
+  return timeString;
 }
 
 function setCookie(cname, cvalue, exdays) {
