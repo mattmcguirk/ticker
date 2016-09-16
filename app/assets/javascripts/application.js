@@ -28,7 +28,8 @@ $(document).on('ready', function(){
       startButton =  $("#start"),
       finishButton = $("#finish"),
       resetButton = $("#reset"),
-      categorySelect = $("#category");
+      categorySelect = $("#category"),
+      nightModeControl = $("#night-mode-control");
 
   startButton.on("click", startTimer);
   finishButton.on("click", finishTask);  
@@ -39,6 +40,7 @@ $(document).on('ready', function(){
   $(".task-log:first-of-type thead span.glyphicon")
                                              .removeClass("glyphicon-chevron-down")
                                              .addClass("glyphicon-chevron-up");
+  nightModeControl.on("click", nightMode);
   
   if(getCookie("timerStart") != "")
   {
