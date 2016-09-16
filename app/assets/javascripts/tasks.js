@@ -17,7 +17,7 @@ $(document).ready(function(){
   startButton.on("click", startTimer);
   finishButton.on("click", finishTask);  
   resetButton.on("click", resetTimer);      
-  $("#task-log .controls .delete").on("click", removeTask);    
+  $(".task-log .controls .delete").on("click", removeTask);    
   categorySelect.on("change", categoryChange);
   $(".task-log .date-header").on("click", toggleTable);
   $(".task-log:first-of-type thead span.glyphicon")
@@ -134,6 +134,7 @@ function newCategorySuccess(data)
 
 function removeTask()
 {
+  console.log("remove row");
   $(this).parents("tr").fadeOut(750);
 }
 
