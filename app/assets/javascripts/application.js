@@ -21,6 +21,8 @@
 var isPaused = 1,
     timeElapsed = 0;
 
+$("body").css("transition","none");
+
 $(document).on('ready', function(){
   
   var minutes = $(".minutes"),
