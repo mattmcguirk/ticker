@@ -16,7 +16,7 @@
     <form class="form-inline" id="task-form">
       <% if logged_in? %> 
         <select name="category" id="category" class="form-control centerSelect"> 
-          <option value="select" id="select">Select a Category</option>
+          <option value="" id="select">Select a Category</option>
           <% @category_options.each do |name, id| %>
             <option value="<%= id %>"> <%= name %> </option>
           <% end %> 
