@@ -5,6 +5,14 @@ body.night-mode
   color: #93a1a1;
   
   .navbar { transition: all 2s; }
+  .dropdown-menu
+  {
+    transition: all 2s;
+    background-color: #002b36;
+    border-top: none;
+  
+    li a { color: #93a1a1; }
+  }
   
   footer { transition: all 2s; background-color: #586e75; }
 }

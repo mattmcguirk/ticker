@@ -42,6 +42,11 @@ $(document).on('ready', function(){
                                              .addClass("glyphicon-chevron-up");
   nightModeControl.on("click", nightMode);
   
+  if(getCookie("nightMode") == 1)
+  {
+    nightMode(); 
+  }
+  
   if(getCookie("timerStart") != "")
   {
     timeElapsed = Math.floor(new Date() / 1000) - getCookie("timerStart");
@@ -225,16 +230,20 @@ function toggleTable()
 
 function nightMode()
 {
-  var body =   $("body"),
-      navbar = $("header > nav");
+  var body =    $("body"),
+      navbar =  $("header > nav"),
+      control = $("#night-mode-control");
   
   if(body.hasClass("night-mode"))
   {
+    setCookie("nightMode", 0, 365);
     body.removeClass("night-mode");
     navbar.removeClass("navbar-inverse").addClass("navbar-default");
   }
   else
   {
+    setCookie("nightMode", 1, 365);
+    control.prop("checked", true); 
     body.addClass("night-mode");
     navbar.removeClass("navbar-default").addClass("navbar-inverse");
   }
