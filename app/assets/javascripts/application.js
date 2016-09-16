@@ -220,3 +220,20 @@ function toggleTable()
     headerGlyph.removeClass("glyphicon-chevron-up").addClass("glyphicon-chevron-down");    
   }
 }
+
+function nightMode()
+{
+  var body =   $("body"),
+      navbar = $("header > nav");
+  
+  if(body.hasClass("night-mode"))
+  {
+    body.removeClass("night-mode");
+    navbar.removeClass("navbar-inverse").addClass("navbar-default");
+  }
+  else
+  {
+    body.addClass("night-mode");
+    navbar.removeClass("navbar-default").addClass("navbar-inverse");
+  }
+}

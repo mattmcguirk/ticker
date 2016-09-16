@@ -1,0 +1,9 @@
+body.night-mode
+{
+  transition: all 2s;
+  background-color: #222;
+  color: #efefef;
+  
+  .navbar { transition: all 2s; }
+  
+}

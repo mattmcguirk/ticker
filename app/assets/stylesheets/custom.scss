@@ -7,8 +7,17 @@
   box-sizing:         border-box;
 }
 
-html { position: relative; min-height: 100%; transition: all 2s;}
-body { width: 100%; font-family: "Source Sans Pro"; margin-bottom: 30px;}
+html { position: relative; min-height: 100%; }
+body 
+{ 
+  width: 100%; 
+  font-family: "Source Sans Pro"; 
+  margin-bottom: 30px; 
+  transition: all 2s;
+  
+  .navbar { transition: all 2s; }
+
+}
 main { max-width: 960px; margin: 0 auto; } 
 .center { text-align: center; } 
 
