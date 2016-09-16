@@ -19,9 +19,9 @@
 /* global $ */ 
 
 var isPaused = 1,
-    timeElapsed = 0;
-
-$("body").css("transition","none");
+    timeElapsed = 0,
+    pomodoroMode = 0,
+    pomodori = 0;
 
 $(document).on('ready', function(){
   
@@ -31,7 +31,8 @@ $(document).on('ready', function(){
       finishButton = $("#finish"),
       resetButton = $("#reset"),
       categorySelect = $("#category"),
-      nightModeControl = $("#night-mode-control");
+      nightModeControl = $("#night-mode-control"),
+      pomodoroModeControl = $("#pomodoro-mode-control");
 
   startButton.on("click", startTimer);
   finishButton.on("click", finishTask);  
@@ -43,11 +44,10 @@ $(document).on('ready', function(){
                                              .removeClass("glyphicon-chevron-down")
                                              .addClass("glyphicon-chevron-up");
   nightModeControl.on("click", nightMode);
+  pomodoroModeControl.on("click", pomodoroToggle);
   
-  if(getCookie("nightMode") == 1)
-  {
-    nightMode(); 
-  }
+  if(getCookie("nightMode") == 1) { nightMode(); }
+  if(getCookie("pomodoroMode") == 1) { pomodoroMode = 1; pomodoroModeControl.prop("checked",true) }
   
   if(getCookie("timerStart") != "")
   {
@@ -59,7 +59,11 @@ $(document).on('ready', function(){
   setInterval(function() {
     if(!isPaused)
     {
-      timeElapsed++;
+      timeElapsed += (60*25);
+      if(pomodoroMode == 1)
+      {
+        pomodoroCheck(); 
+      }
       seconds.html(pad(timeElapsed % 60));
       minutes.html(Math.floor(timeElapsed / 60));
       setCookie("timerDescription", $("#description textarea").val(), 365);
@@ -248,5 +252,39 @@ function nightMode()
     control.prop("checked", true); 
     body.addClass("night-mode");
     navbar.removeClass("navbar-default").addClass("navbar-inverse");
+  }
+}
+
+function pomodoroCheck()
+{
+  var pomodoro = $("<span class='glyphicon glyphicon-ok-circle'></span>");
+  console.log(timeElapsed % 300);
+  if(timeElapsed % (60 * 25) == 0)
+  {
+    if(pomodori < 4)
+    {
+      $("#pomodori").append(pomodoro);
+      pomodori++; 
+    }
+    else
+    {
+      $("#pomodori").append("<span class='glyphicon glyphicon-ok-sign'></span><span style='padding-right:20px'></span>");
+      pomodori = 0; 
+    }
+  }
+  
+}
+
+function pomodoroToggle()
+{
+  if(pomodoroMode == 0)
+  {
+    pomodoroMode = 1;
+    setCookie("pomodoroMode", 1, 365);
+  }
+  else
+  {
+    pomodoroMode = 0;
+    setCookie("pomodoroMode", 0, 365);
   }
 }

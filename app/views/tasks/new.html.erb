@@ -5,14 +5,19 @@
       <span class="seconds">00</span>s
     </div>
 
-      <div class="controls">
-        <button class="btn btn-default btn-sm" id="start">Start</button> 
-        <button class="btn btn-default btn-sm" id="reset">Reset</button>
-      </div>
+    <div id="pomodori">
+      
+    </div>
 
-      <div id="description">
-        <textarea rows="3" placeholder="What are you working on?"></textarea>
-      </div>
+    <div class="controls">
+      <button class="btn btn-default btn-sm" id="start">Start</button> 
+      <button class="btn btn-default btn-sm" id="reset">Reset</button>
+    </div>
+
+    <div id="description">
+      <textarea rows="3" placeholder="What are you working on?"></textarea>
+    </div>
+    
     <form class="form-inline" id="task-form">
       <% if logged_in? %> 
         <select name="category" id="category" class="form-control centerSelect"> 
