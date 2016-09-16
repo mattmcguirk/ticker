@@ -16,8 +16,11 @@ module TasksHelper
   end
   
   def pad(number)
-    if (number.to_i < 10) then return "0" + number end 
-    else return number 
+    if (number.to_i < 10 && number.to_i > 59) 
+      return "0" + number  
+    else 
+      return number
+    end
   end
 
   def quip

@@ -20,7 +20,9 @@ class TasksController < ApplicationController
   def create
     if logged_in?
       @task = Task.new(task_params)
-      @task.save
+      unless @task.save
+        return @task.errors.full_messages
+      end
     end
   end
   

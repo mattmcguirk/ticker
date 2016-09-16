@@ -81,9 +81,13 @@ function finishTask()
   time = stringifyTime(),
   user = $("#user_id").attr("value"), 
   category = $("#category").val(), 
-  categoryText = $("#category option:selected").text(); 
+  categoryText = $("#category option:selected").text();
+  if(categoryText == "Select a Category")
+  {
+    categoryText = "-";
+  }
   
-  $("#recent-tasks table tbody").prepend("<tr><td>" + categoryText + "</td><td>" + time + "</td> <td>" + description + "</td></tr>").hide().fadeIn(500);
+  $("#recent-tasks table tbody").prepend("<tr><td class='category'>" + categoryText + "</td><td>" + time + "</td> <td>" + description + "</td></tr>").hide().fadeIn(500);
   $.post('/track', { 
       task: { 
         time: timeElapsed, 

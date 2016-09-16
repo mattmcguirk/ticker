@@ -48,7 +48,11 @@ main { max-width: 960px; margin: 0 auto; }
 {
   min-width: 80px;
   vertical-align: top;
-  padding-left: 0;
+}
+
+#recent-tasks table tr td.category
+{
+  text-align :center; 
 }
 
 #recent-tasks thead 
