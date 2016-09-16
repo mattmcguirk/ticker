@@ -6,10 +6,8 @@
   -webkit-box-sizing: border-box;
   box-sizing:         border-box;
 }
-html {
-  position: relative;
-  min-height: 100%;
-}
+
+html { position: relative; min-height: 100%; transition: all 2s;}
 body { width: 100%; font-family: "Source Sans Pro"; margin-bottom: 30px;}
 main { max-width: 960px; margin: 0 auto; } 
 .center { text-align: center; } 
@@ -35,50 +33,36 @@ main { max-width: 960px; margin: 0 auto; }
 
 #finish { font-size: 20px; } 
 
-#recent-tasks { padding-top: 15px; } 
-
-#recent-tasks table { display: none; transition: all 0.5s; } 
-
-#recent-tasks table tr td
+#recent-tasks 
 { 
-  padding: 5px;
-}
+  padding-top: 15px; 
 
-#recent-tasks table tr td.time
-{
-  min-width: 80px;
-  vertical-align: top;
-}
-
-#recent-tasks table tr td.category
-{
-  text-align :center; 
-}
-
-#recent-tasks thead 
-{
-  font-weight: bold; 
-  font-size: 14pt;
-}
-
-#recent-tasks tbody
-{
-  font-size: 12pt;
-}
-
-#recent-tasks .message
-{
-  font-size: 18px; 
-  text-align: center;
-}
-
-#recent-tasks .message .quip
-{
-  padding-top: 15px;
-  font-style: italic;
-  font-size: 20pt;
-  font-weight: bold;
-}
+  table 
+  { 
+    display: none; 
+    transition: all 0.5s; 
+    tr td { padding: 5px; }
+    tr td.time { min-width: 80px; vertical-align: top; }
+    tr td.category { text-align :center; }
+    thead { font-weight: bold; font-size: 14pt; }
+    tbody { font-size: 12pt; }    
+  } 
+  
+  
+  
+  .message
+  {
+    font-size: 18px; 
+    text-align: center;
+    .quip
+    {
+      padding-top: 15px;
+      font-size: 20pt;
+      font-weight: bold;
+    }
+  }
+  
+} 
 
 input, textarea, select, .uneditable-input {
   border: 1px solid #bbb;
@@ -113,13 +97,8 @@ input {
   }
 
   tr td.category { text-align: center; }
-  
-  tr td.task { text-align: center; } 
-  
-  .header, .date-header
-  {
-    font-weight: bold; 
-  }
+  tr td.task { text-align: center; }
+  .header, .date-header { font-weight: bold; }
   
   .date-header
   {
@@ -127,7 +106,6 @@ input {
     font-weight: bold;
     font-size: 14pt;
   }
-
 
   .header
   {
@@ -159,53 +137,36 @@ input {
 }
 footer
 {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 30px;
-    background-color: #3d3d3d;
-    padding: 7px 0;
-    text-align: center;
-    font-size: 9pt;
-    color: white; 
-}
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 30px;
+  background-color: #3d3d3d;
+  padding: 7px 0;
+  text-align: center;
+  font-size: 9pt;
+  color: white; 
 
-footer a 
-{
-  color: #e5e5e5;
-  text-decoration: underline;
-}
-
-footer a:hover
-{
-  color: #ffffff;
-}
-
-footer a:visited
-{
-  color: #e5e5e5;
-}
-
-footer .bullet
-{
-  padding: 0 10px;
+  a { color: #e5e5e5; text-decoration: underline; }
+  a:hover { color: #ffffff; }
+  a:visited { color: #e5e5e5; }
+  .bullet { padding: 0 10px; }
 }
 
 .navbar-brand 
 { 
   font-size: 24pt; 
   font-family: "Comfortaa"; 
-}
 
-.navbar-brand sup
-{
-    font-size: 10px;
-    top: -20px;
-    font-family: "Source Sans Pro";
-    color: cornflowerblue;
-    font-weight: bold;
+  sup
+  {
+      font-size: 10px;
+      top: -20px;
+      font-family: "Source Sans Pro";
+      color: cornflowerblue;
+      font-weight: bold;
+  }
 }
-
 
 @media only screen and (min-width : 768px)
 {
@@ -255,5 +216,4 @@ text-align: center;
 }
 :-moz-placeholder { /* Firefox 18- */
 text-align: center;
-  
 }
