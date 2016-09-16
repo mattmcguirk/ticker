@@ -14,5 +14,13 @@ body.night-mode
     li a { color: #93a1a1; }
   }
   
-  footer { transition: all 2s; background-color: #586e75; }
+  footer 
+  { 
+    transition: all 2s; 
+    background-color: #586e75; 
+    color: white; 
+    
+    a, a:visited { color: white; }
+  }
+  
 }
