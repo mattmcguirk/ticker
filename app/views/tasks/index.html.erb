@@ -16,7 +16,6 @@
         current_date = formatted_day(t)
       %>
         <% if first_loop == 0 %>
-        </tbody>
       </table> 
       <% end %>
       <table class="task-log">
@@ -28,14 +27,14 @@
             </td>
           </tr>
         </thead>
+        <tbody>
         <tr class="header">
           <td><!-- controls --></td>
           <td class="time">Time</td>
           <td class="category">Category</td>
-          <td class="time-elapsed">Duration</td>
           <td class="task">Task</td>
+          <td class="time-elapsed">Duration</td>
         </tr>
-        <tbody>
         <% end %> 
         <tr>
           <td class="controls">
@@ -45,8 +44,8 @@
           </td>
           <td class="time"><%= t.created_at.in_time_zone("America/New_York").strftime('%l:%M %P') %></td>
           <td class="category"><%= if t.category.nil? then "-" else t.category.name end %></td>
-          <td class="time-elapsed"><%= seconds_to_s(t.time) %></td>
           <td class="task"><%= t.description %></td>
+          <td class="time-elapsed"><%= seconds_to_s(t.time) %></td>
         </tr>  
       <% if formatted_day(t) != current_date  %>
       </tbody>
@@ -57,7 +56,6 @@
          first_loop = 0
       %>
     <% end %>
-    </tbody>
     </table>
   </div>
 </div>
