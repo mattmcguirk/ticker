@@ -35,7 +35,8 @@ module TasksHelper
               'If the only thing you have is a fork, everything looks like linguini.',
               'Confront the spectacle with its own irrelevance',
               'Saying nothing is a valid response.',
-              'One cloud plus one cloud equals one cloud.'
+              'One cloud plus one cloud equals one cloud.',
+              'Fear is the mind killer.'
             ]
     quips.shuffle.first
   end
