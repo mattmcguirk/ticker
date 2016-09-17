@@ -21,8 +21,9 @@
 var isPaused = 1,
     timeElapsed = 0,
     pomodoroMode = 0,
-    pomodori = 0;
-
+    pomodori = 0,
+    woodBlock = new Audio('/assets/woodblock.mp3'),
+    anvil = new Audio('/assets/anvil.mp3');
 
 $(document).on('ready', function(){
   
@@ -50,7 +51,13 @@ $(document).on('ready', function(){
   pomodoroModeControl.on("click", pomodoroToggle);
   
   if(getCookie("nightMode") == 1) { nightMode(); }
-  if(getCookie("pomodoroMode") == 1) { pomodoroMode = 1; pomodoroModeControl.prop("checked",true) }
+  if(getCookie("pomodoroMode") == 1) 
+  { 
+    pomodoroMode = 1; 
+    pomodoroModeControl.prop("checked",true);
+    pomodori = getCookie("pomodori");
+    renderPomodori();
+  }
   
   if(getCookie("timeElapsed") != "")
   {
@@ -65,7 +72,8 @@ $(document).on('ready', function(){
       timeElapsed++;
       if(pomodoroMode == 1)
       {
-        pomodoroCheck(); 
+        pomodoroCheck();
+        setCookie("pomodori", pomodori, 365);
       }
 
       renderTime(); 
@@ -73,7 +81,7 @@ $(document).on('ready', function(){
       setCookie("timerDescription", $("#description textarea").val(), 365);
       setCookie("timeElapsed", timeElapsed, 365);
     }
-  }, 1000);
+  }, 1);
 
   $('#user_time_zone').selectTimeZone();
   $('.centerSelect').each(function(){
@@ -82,7 +90,7 @@ $(document).on('ready', function(){
 
 });
 
-function renderTime() { $(".time").html(stringifyTime(timeElapsed)); }
+function renderTime() { $("#timer .time").html(stringifyTime(timeElapsed)); }
 
 function startTimer() { isPaused = 0; }
 function pauseTimer() { isPaused = 1; }
@@ -98,10 +106,13 @@ function resetTimer()
 {
   stopTimer();
   timeElapsed = 0; 
+  pomodori = 0; 
   renderTime();
+  renderPomodori();
   $("#description textarea").val(""); 
   setCookie("timeElapsed", "", 365);
   setCookie("timerDescription", "", 365);
+  setCookie("pomodori", "", 365);
 }
 
 function finishTask() 
@@ -261,22 +272,44 @@ function nightMode()
 
 function pomodoroCheck()
 {
-  var pomodoro = $("<span class='glyphicon glyphicon-ok-circle'></span>");
-  console.log(timeElapsed % 300);
-  if(timeElapsed % (60 * 25) == 0)
+  if(timeElapsed % (60 * 25 * 4) == 0)
   {
-    if(pomodori < 4)
+    pomodori++; 
+    renderPomodori(); 
+    anvil.play();
+    longBreak(); 
+  }
+  else if(timeElapsed % (60 * 25) == 0)
+  {
+    pomodori++; 
+    renderPomodori(); 
+    woodBlock.play();
+    shortBreak(); 
+  }
+}
+
+function renderPomodori()
+{
+  var pomodoriDiv = $("div#pomodori .icons"),
+      i = 0,
+      string = "";
+      
+  pomodoriDiv.html(""); 
+
+  for(i = 1; i <= pomodori; i++)
+  {
+    console.log("i: " + i);
+    if(i % 4 != 0)
     {
-      $("#pomodori").append(pomodoro);
-      pomodori++; 
+      string += "<span class='glyphicon glyphicon-ok-circle'></span>";    
     }
-    else
+   
+    if(i % 4 == 0)
     {
-      $("#pomodori").append("<span class='glyphicon glyphicon-ok-sign'></span><span style='padding-right:20px'></span>");
-      pomodori = 0; 
+      string += "<span class='glyphicon glyphicon-ok-sign' style='padding-right: 20px'></span>";
     }
   }
-  
+  pomodoriDiv.html(string); 
 }
 
 function pomodoroToggle()
@@ -288,7 +321,29 @@ function pomodoroToggle()
   }
   else
   {
+    $("#pomodori .message").html("");
+    $("#pomodori .icons").html("");
     pomodoroMode = 0;
     setCookie("pomodoroMode", 0, 365);
   }
+}
+
+function shortBreak()
+{
+  isPaused = 1;
+  $("#pomodori .message").html("Time for a five minute break.");
+  setTimeout(function(){
+    $("#pomodori .message").html("");
+    isPaused = 0;
+  }, (60*5*1000));
+}
+
+function longBreak()
+{
+  isPaused = 1; 
+  $("#pomodori .message").html("Four pomodori! You've earned a 30 minute break.");
+  setTimeout(function(){
+    isPaused = 0; 
+    $("#pomodori .message").html("");
+  }, (60*30*1000));
 }
