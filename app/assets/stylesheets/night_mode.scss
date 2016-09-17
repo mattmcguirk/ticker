@@ -5,6 +5,7 @@ body.night-mode
   color: #93a1a1;
   
   .navbar { transition: all 2s; }
+  .navbar-brand .brand { color: white; }
   .dropdown-menu
   {
     transition: all 2s;
@@ -17,10 +18,26 @@ body.night-mode
   footer 
   { 
     transition: all 2s; 
-    background-color: #586e75; 
-    color: white; 
+    background-color: #222; 
+    color: #cfcfcf; 
     
-    a, a:visited { color: white; }
+    a, a:visited { color: #cdcdcd; }
   }
+  
+  textarea
+  {
+    transition: all 2s;
+    background-color: #222;
+    color: #cdcdcd;
+  }
+
+  select
+  {
+    transition: background-color 2s, color 2s;
+    background-color: #222;
+    color: #cdcdcd;
+  }
+  
+  #timer .time { color: white; }
   
 }

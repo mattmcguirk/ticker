@@ -316,11 +316,13 @@ function pomodoroToggle()
 {
   if(pomodoroMode == 0)
   {
+    $("#pomodori").show();
     pomodoroMode = 1;
     setCookie("pomodoroMode", 1, 365);
   }
   else
   {
+    $("#pomodori").hide();
     $("#pomodori .message").html("");
     $("#pomodori .icons").html("");
     pomodoroMode = 0;
