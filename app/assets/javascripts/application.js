@@ -81,7 +81,7 @@ $(document).on('ready', function(){
       setCookie("timerDescription", $("#description textarea").val(), 365);
       setCookie("timeElapsed", timeElapsed, 365);
     }
-  }, 1);
+  }, 1000);
 
   $('#user_time_zone').selectTimeZone();
   $('.centerSelect').each(function(){
