@@ -56,6 +56,7 @@ $(document).on('ready', function(){
     pomodoroMode = 1; 
     pomodoroModeControl.prop("checked",true);
     pomodori = getCookie("pomodori");
+    $("#pomodori").show(); 
     renderPomodori();
   }
   
