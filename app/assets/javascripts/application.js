@@ -62,7 +62,10 @@ $(document).on('ready', function(){
   if(getCookie("timeElapsed") != "")
   {
     timeElapsed = getCookie("timeElapsed");
-    $("#description textarea").val(getCookie("timerDescription"));
+    if(getCookie("timerDescription") != "undefined")
+    {
+      $("#description textarea").val(getCookie("timerDescription"));
+    }
     startTimer(); 
   }
 
