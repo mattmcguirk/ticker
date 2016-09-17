@@ -29,14 +29,22 @@ body
     transition: all 2s;
     background-color: #efefef;
     border-top: none;
-  
+    
     li a { color: #586e75; }
 
     div.checkbox
     {
       padding-left: 13px;
       margin: 5px;
-    }    
+    }
+    
+    sup
+    {
+      font-size: 10pt;
+      top: -0.25em;
+      
+      a { color: cornflowerblue; } 
+    }
   }
 }
 
